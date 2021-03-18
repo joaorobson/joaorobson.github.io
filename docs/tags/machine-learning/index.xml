@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>machine learning on no brAIner</title>
+    <link>https://joaorobson.github.io/tags/machine-learning/</link>
+    <description>Recent content in machine learning on no brAIner</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 04 May 2020 10:42:42 -4200</lastBuildDate><atom:link href="https://joaorobson.github.io/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Essential metrics for classification tasks</title>
+      <link>https://joaorobson.github.io/post/metrics-classification/</link>
+      <pubDate>Mon, 04 May 2020 10:42:42 -4200</pubDate>
+      
+      <guid>https://joaorobson.github.io/post/metrics-classification/</guid>
+      <description>Introduction A machine learning classification problem refers to the task of predicting the class of a sample given its features. Usually, these problems are divided into three types: binary, multiclass, and multilabel classification.
+The difference is simple. When the problem is formed by only two classes, for instance, predict if the genre of a book is fiction or non-fiction or if a news is fake or not, it is called binary classification.</description>
+    </item>
+    
+  </channel>
+</rss>

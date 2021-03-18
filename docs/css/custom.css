@@ -1,0 +1,31 @@
+.bg-top {
+	background-position: 50% 20%;
+}
+
+.bg-black-60 {
+	background-color: rgba(0, 0, 0, .3);
+}
+
+.cf {
+
+text-align: justify;
+
+opacity: 1.0;
+
+width: 100%;
+
+height: auto;
+}
+ 
+.nested-links{
+
+text-align: justify;
+
+opacity: 1.0;
+
+width: 100%;
+
+height: auto;
+
+}
+

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on no brAIner </title>
+    <link>https://joaorobson.github.io/pt/tags/</link>
+    <description>Recent content in Tags on no brAIner </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 04 May 2020 10:42:42 -4200</lastBuildDate><atom:link href="https://joaorobson.github.io/pt/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>classification</title>
+      <link>https://joaorobson.github.io/pt/tags/classification/</link>
+      <pubDate>Mon, 04 May 2020 10:42:42 -4200</pubDate>
+      
+      <guid>https://joaorobson.github.io/pt/tags/classification/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>machine learning</title>
+      <link>https://joaorobson.github.io/pt/tags/machine-learning/</link>
+      <pubDate>Mon, 04 May 2020 10:42:42 -4200</pubDate>
+      
+      <guid>https://joaorobson.github.io/pt/tags/machine-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>metrics</title>
+      <link>https://joaorobson.github.io/pt/tags/metrics/</link>
+      <pubDate>Mon, 04 May 2020 10:42:42 -4200</pubDate>
+      
+      <guid>https://joaorobson.github.io/pt/tags/metrics/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
