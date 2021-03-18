@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Essential metrics for classification tasks | no brAIner</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Introduction A machine learning classification problem refers to the task of predicting the class of a sample given its features. Usually, these problems are divided into three types: binary, multiclass, and multilabel classification.
+The difference is simple. When the problem is formed by only two classes, for instance, predict if the genre of a book is fiction or non-fiction or if a news is fake or not, it is called binary classification.">
+    <meta name="generator" content="Hugo 0.81.0" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+
+  
+  
+    <link rel="stylesheet" href="/ananke/dist/main.css_5c99d70a7725bacd4c701e995b969fea.css" >
+  
+
+
+
+  <link rel="stylesheet" href="/css/custom.css">
+
+
+    
+      
+
+    
+
+    
+    
+    <meta property="og:title" content="Essential metrics for classification tasks" />
+<meta property="og:description" content="Introduction A machine learning classification problem refers to the task of predicting the class of a sample given its features. Usually, these problems are divided into three types: binary, multiclass, and multilabel classification.
+The difference is simple. When the problem is formed by only two classes, for instance, predict if the genre of a book is fiction or non-fiction or if a news is fake or not, it is called binary classification." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/post/metrics-classification/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2020-05-04T10:42:42-42:00" />
+<meta property="article:modified_time" content="2020-05-04T10:42:42-42:00" /><meta property="og:site_name" content="no brAIner" />
+
+<meta itemprop="name" content="Essential metrics for classification tasks">
+<meta itemprop="description" content="Introduction A machine learning classification problem refers to the task of predicting the class of a sample given its features. Usually, these problems are divided into three types: binary, multiclass, and multilabel classification.
+The difference is simple. When the problem is formed by only two classes, for instance, predict if the genre of a book is fiction or non-fiction or if a news is fake or not, it is called binary classification."><meta itemprop="datePublished" content="2020-05-04T10:42:42-42:00" />
+<meta itemprop="dateModified" content="2020-05-04T10:42:42-42:00" />
+<meta itemprop="wordCount" content="4535">
+<meta itemprop="keywords" content="metrics,machine learning,classification," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Essential metrics for classification tasks"/>
+<meta name="twitter:description" content="Introduction A machine learning classification problem refers to the task of predicting the class of a sample given its features. Usually, these problems are divided into three types: binary, multiclass, and multilabel classification.
+The difference is simple. When the problem is formed by only two classes, for instance, predict if the genre of a book is fiction or non-fiction or if a news is fake or not, it is called binary classification."/>
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  
+  
+  <header class="cover bg-top" style="background-image: url('https://example.com/images/metrics.jpg');">
+    <div class="pb3-m pb6-l bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        no brAIner
+      
+    </a>
+    <div class="flex-l items-center">
+      
+<h4></h4>
+<ul class="pl0 mr3">
+    
+    <li class="list f5 f4-ns fw4 dib pr3">
+        <a class="hover-white no-underline white-90" href="/pt/post/metrics-classification/">pt</a>
+    </li>
+    
+</ul>
+
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/about/" title="About me page">
+              About me
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/post/" title="Articles page">
+              Articles
+            </a>
+          </li>
+          
+        </ul>
+      
+      
+
+
+
+
+
+
+
+<a href="https://www.linkedin.com/in/joaorobson/" target="_blank" class="link-transition linkedin link dib z-999 pt3 pt0-l mr1" title="LinkedIn link" rel="noopener" aria-label="follow on LinkedIn——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+<a href="https://github.com/joaorobson" target="_blank" class="link-transition github link dib z-999 pt3 pt0-l mr1" title="Github link" rel="noopener" aria-label="follow on Github——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <path d="M256,32C132.3,32,32,134.8,32,261.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1   c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8c-10.2-26.5-24.9-33.6-24.9-33.6c-20.3-14.3,1.5-14,1.5-14   c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5   c0-25.1,8.7-45.6,23-61.6c-2.3-5.8-10-29.2,2.2-60.8c0,0,18.8-6.2,61.6,23.5c17.9-5.1,37-7.6,56.1-7.7c19,0.1,38.2,2.6,56.1,7.7   c42.8-29.7,61.5-23.5,61.5-23.5c12.2,31.6,4.5,55,2.2,60.8c14.3,16.1,23,36.6,23,61.6c0,88.2-52.4,107.6-102.3,113.3   c8,7.1,15.2,21.1,15.2,42.5c0,30.7-0.3,55.5-0.3,63c0,6.1,4,13.3,15.4,11C415.9,449.1,480,363.1,480,261.7   C480,134.8,379.7,32,256,32z"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <h1 class="f2 f1-l fw2 white-90 mb0 lh-title">Essential metrics for classification tasks</h1>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked">
+          
+        ARTICLES
+      </aside>
+      
+
+
+
+
+  <div id="sharing" class="mt3">
+
+    
+    <a href="https://www.facebook.com/sharer.php?u=https://example.com/post/metrics-classification/" class="facebook no-underline" aria-label="share on Facebook">
+      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M28.765,50.32h6.744V33.998h4.499l0.596-5.624h-5.095  l0.007-2.816c0-1.466,0.14-2.253,2.244-2.253h2.812V17.68h-4.5c-5.405,0-7.307,2.729-7.307,7.317v3.377h-3.369v5.625h3.369V50.32z   M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
+
+    </a>
+
+    
+    
+    <a href="https://twitter.com/share?url=https://example.com/post/metrics-classification/&amp;text=Essential%20metrics%20for%20classification%20tasks" class="twitter no-underline" aria-label="share on Twitter">
+      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+    </a>
+
+    
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://example.com/post/metrics-classification/&amp;title=Essential%20metrics%20for%20classification%20tasks" class="linkedin no-underline" aria-label="share on LinkedIn">
+      <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+    </a>
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Essential metrics for classification tasks</h1>
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2020-05-04T10:42:42-42:00">May 4, 2020</time>
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><h2 id="introduction">Introduction</h2>
+<p>A machine learning classification problem refers to the task of predicting the class of a sample given its features. Usually, these problems are divided into three types: binary, multiclass, and multilabel classification.</p>
+<p>The difference is simple. When the problem is formed by only two classes, for instance, predict if the genre of a book is fiction or non-fiction or if a news is fake or not, it is called binary classification. Otherwise, when the number of possible classes is three or more, the problem could be multiclass or multilabel.</p>
+<p>Multiclass tasks happen when each sample can be assigned only to one class. One example of that is the classic machine learning problem of labeling the digits from the <a href="http://yann.lecun.com/exdb/mnist/">MNIST dataset</a>. This problem involves predicting a number from 0 to 9 based on a handwritten digit image, that is, from 10 possible classes, one could assign only one of these to a sample.</p>
+<p>The generalization of this situation, when there are no constraints to the number of classes that could be given to a sample, in other words, if one could tag a sample with one, three or one hundred classes (or whatever the total number of distinct classes inherent to the problem is), is known as multilabel classification. It happens, for instance, in the classification of a band&rsquo;s genre, that could include more than one single tag to each artist.</p>
+<h2 id="in-practice-what-is-the-difference-between-them">In practice, what is the difference between them?</h2>
+<p>Basically, what differentiates the classification categories is how the data itself is represented.</p>
+<p>(The algorithms used to make predictions using the data, as well as how their outputs are produced, tend to vary too, but this explanation is a little bit complex. A good starting point to understand these details is <a href="https://scikit-learn.org/stable/modules/multiclass.html">this page</a> from the documentaion of sklearn, a widely used tool in ML world, where there is a wonderful overview of strategies and models used on multiclass and multilabel classification.)</p>
+<p>For <strong>binary problems</strong>, the data is usually represented by &ldquo;1&rsquo;s&rdquo; and &ldquo;0&rsquo;s&rdquo;, &ldquo;1&rdquo; used for the samples of what is known as the positive class and &ldquo;0&rsquo;s&rdquo; for the negative class, like this:</p>
+
+
+
+    <p align="center">
+      [1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0]
+    </p>
+
+
+
+<p>It is important to say that these values could be anything (&ldquo;Yes&rdquo; and &ldquo;No&rdquo;, &ldquo;Good&rdquo; and &ldquo;Bad&rdquo;, &ldquo;Blue&rdquo; and &ldquo;Red&rdquo;, etc.), as long as they are distinct.</p>
+<p>For <strong>multiclass problems</strong>, each label is represented by a distinct value too, usually ranging from 0 to n-1, n being the number of distinct classes. A possible representation for the data in a problem with 5 classes is this vector:</p>
+
+
+
+    <p align="center">
+      [2, 3, 2, 1, 0, 4, 4, 0, 1, 2, 4, 4, 2, 1, 1, 3, 2, 2, 4]
+    </p>
+
+
+<p>In <strong>multilabel tasks</strong>, things become a little more complex. In these problems, there are two strategies usually used: <strong>Binary Relevance</strong> and <strong>Label powerset</strong>.</p>
+<p>In the <strong>Binary Relevance</strong> technique, the data is formed by a vector with n positions (n being the number of distinct classes). For each position, one of two values could be given: one pointing the occurence of the class represented by that index in that sample and another indicating absence. Usually, these values are &ldquo;1&rdquo; and &ldquo;0&rdquo;. So, imagining that there are five classes in our data (&ldquo;0&rdquo;, &ldquo;1&rdquo;, &ldquo;2&rdquo;, &ldquo;3&rdquo; and &ldquo;4&rdquo;) and 10 samples, we could have:</p>
+
+
+
+    <p align="center">
+      [[0, 1, 0, 1, 0], [1, 1, 0, 0, 0], [1, 1, 1, 1, 1], [1, 0, 0, 0, 1], [1, 1, 1, 0, 0], </br>
+       [1, 0, 0, 0, 0], [1, 1, 1, 0, 0], [1, 1, 0, 0, 0], [1, 0, 1, 0, 1], [1, 1, 1, 0, 1]]
+    </p>
+
+
+
+<p>The first item in the list, for instance, indicates that the the labels present in the first sample are &ldquo;1&rdquo; and &ldquo;3&rdquo;.</p>
+<p>The <strong>Label powerset</strong> option refers to the strategy of transforming the set of label combinations present in the data represented by the binary revelance method into a set of distinct labels, i.e., transform a multilabel problem into a multiclass problem. Taking the list above as an example, we would have the following transformation:</p>
+
+
+    <p align="center">
+      [0, 1, 0, 1, 0] -> 0 </br>
+      [1, 0, 0, 0, 0] -> 1 </br>
+      [1, 0, 0, 0, 1] -> 2 </br>
+      [1, 0, 1, 0, 1] -> 3 </br>
+      [1, 1, 0, 0, 0] -> 4 </br>
+      [1, 1, 1, 0, 0] -> 5 </br>
+      [1, 1, 1, 0, 1] -> 6 </br>
+      [1, 1, 1, 1, 1] -> 7 
+    </p>
+
+
+<p>And the resulting data would be:</p>
+
+
+
+    <p align="center">
+      [0, 4, 7, 2, 5, 1, 5, 4, 3, 6]
+    </p>
+
+
+
+
+<p>Another important difference between these three types of classification is the way that the quality of the predictions is measured. Each one takes a slightly distinct approach to quantify how well the model is performing. Let&rsquo;s take a look at that.</p>
+<h3 id="binary-classification-evaluation">Binary classification evaluation</h3>
+<p>One of the most basic ways to measure how well a model predicts the classes of new samples is by using a diagram known as the confusion matrix. It is used to visualize how the predicted and actual classes are related. So, using the fiction/non-fiction example mentioned early, we could have a matrix that looks like this:</p>
+
+
+<img src="/images/metrics_classif/conf_matrix.png"  width="80%" style="max-width: 70%;margin: 0% 15%" />
+
+
+<p>The rows group the number of predicted samples in each class. The columns account for the actual number of samples presented in each class. But how to make conclusions out of that?</p>
+<p>First of all, it is important to grasp the concept behind true/false positives and true/false negatives.</p>
+<p>True positives refer to the condition where the model correctly predicts the positive class, which in our example is &ldquo;Fiction&rdquo;. Equivalently, a true negative occurs when the model correctly classifies a sample as being from the negative class (&ldquo;Non-fiction&rdquo;).</p>
+<p>The two remaining terms refer to situations when the model makes a mistake. So, a false positive (also known as type I error) happens when the sample belongs to the negative class but it is predicted as being from the positive one. So, when the label &ldquo;Fiction&rdquo; is assigned to a fiction book, a false positive happens. The opposite, i.e., a false negative (or type II error), occurs when a positive class sample (a fiction book) is incorrectly labeled as a negative class (non-fiction).</p>
+<p>With this in mind, let&rsquo;s come back to the example. We have 100 books divided like this:</p>
+<ul>
+<li>43 fiction books;</li>
+<li>57 non-fiction books.</li>
+</ul>
+<p>The model predicted the majority of the books in the right class, but some were misclassified. Summing up, there are 42 true positives, 10 false positives, 1 false negative, and 47 true negatives.</p>
+<p>Ok. But how to interpret this result? Is it good or bad? We need some metrics to make an evaluation.</p>
+<h4 id="understanding-accuracy-precision-andrecall">Understanding accuracy, precision, and recall</h4>
+<p>In classification tasks, the most common metrics are accuracy, precision, recall, and f1-score. They provide a numerical value, ranging from 0 to 1,
+that evaluate the relationship between right and wrong predictions. Here are their formulas:</p>
+<p>$$ Accuracy = \frac{ TP + TN }{ TP + TN + FP + FN }$$
+$$ Precision = \frac{ TP }{ TP + FP }$$
+$$ Recall = \frac{ TP }{ TP + FN }$$
+$$ F_{1} = \frac{ 2 \cdot Precision \cdot Recall }{ Precision + Recall } $$</p>
+<p>Each one uses a different approach to analyze the obtained results, pondering the right and wrong predictions in a slightly different way.</p>
+<p><strong>Accuracy</strong> represents how many predictions from the total were right:</p>
+<p>$$ Accuracy = \frac{ 42 + 47 }{42 + 47 + 10 + 1} = \frac{89}{100} = 89 \% $$</p>
+<p><strong>Precision</strong> measures the percentage of correctly positive samples classifications in relation to all the samples that were classified as being from the positive class. In our example:</p>
+<p>$$ Precision = \frac{ 42 }{42 + 10} = \frac{42}{52} \approx 81 \% $$</p>
+<p><strong>Recall</strong> follows a similar approach to precision, but instead of using the total of samples labeled with the positive class to calculate the percentage, it returns the percentage of correctly classified positive samples in relation to the total number of actual positive samples. Here it is its value:</p>
+<p>$$ Recall = \frac{ 42 }{42 + 1} = \frac{42}{43} \approx 98 \% $$</p>
+<p>The last presented formula, known as <strong>F1 score</strong>, evaluates the <a href="https://en.wikipedia.org/wiki/Harmonic_mean">harmonic mean</a> of precision and recall. For this example, its value is:</p>
+<p>$$ F_{1} = \frac{ 2 \cdot 0.81 \cdot 0.98 }{0.81 + 0.98} = \frac{1.58}{1.79} \approx 88 \% $$</p>
+<p>Ok. Now we have 4 values and all results look great, right? </p>
+<p>They are all close to 100%. Accuracy, for instance, tells us that of 100 predicted classes, almost 90% were correct predictions.</p>
+<p>Apparently, regardless of the problem someone is tackling, these numbers would seem enough to tell that our model is close to the best possible. Is this really true? Let&rsquo;s see.</p>
+<p>Imagine that instead of classifying books, the model was predicting if the type of a patient&rsquo;s cancer is benign or malignant. Keeping the numbers unchanged, of 43 people that have benign cancer, only 1 would be misclassified. That&rsquo;s not such a huge problem. The test could be repeated to double-check on that. The big issue is with false positives. Of 57 people with a form of cancer that is malignant, 10 (approximately 20%) would receive a result saying that they have a disease that is less aggressive. This is bad. Imagine how many of these people would not repeat the exam and have serious consequences for that.</p>
+<blockquote>
+<p>A raw number by itself is not enough to define how good a prediction is. The context of the problem has huge importance to determine the metrics to be used and what is &ldquo;good&rdquo; or &ldquo;bad&rdquo;.</p>
+</blockquote>
+<p>Sometimes, more false negatives than false positives, as the benign/malignant cancer example, and consequently a recall lower than precision, is preferable than the contrary. On other occasions, achieve an accuracy of 70% (which is better than 50/50 guess) would be excellent. Each problem is unique and the role of a Machine Learning enthusiast or professional is to understand the metrics and use the most appropiate in each context.</p>
+<h3 id="multiclass-classification-evaluation">Multiclass classification evaluation</h3>
+<p>Imagine that one decides that instead of classifying the books in fiction or non-fiction, there will be a classification based on the number of stars that the book received on a online store. So, supposing that there are five classes (1 to 5 stars), one possible confusion matrix for this problem would look like that:</p>
+
+
+<img src="/images/metrics_classif/conf_matrix2.png"  width="50%" style="max-width: 50%;margin: 0% 25%" />
+
+
+<p>Repair that it keeps having the 100 books, but there are 5 columns and 5 rows. Moreover, books are classified according to their number of stars now. How the true/false positives and negatives will be measure now without &ldquo;positive&rdquo; or &ldquo;negative&rdquo; classes? Let&rsquo;s check it out.</p>
+<p>Accuracy is the easiest one to calculate. As said before, it is represented by the division of the total number of right predictions by the total number of samples. So, looking at the matrix above, all the numbers on the diagonal with darker blue squares account for the right predictions because they represent the situations where the model assigned the correct class to that sample.
+For this problem, the accuracy is:</p>
+<p>$$ Accuracy = \frac{ 15 + 14 + 10 + 12 + 17 }{100} = \frac{68}{100} = 68 \% $$</p>
+<p>Ok. But how to calculate the values of precision and recall? They depend on the number of false positives/negatives and consequently on the existence of positive/negative classes.</p>
+<p>A multiclass problem could be treated as an extension of the binary classification. We only need to consider the problem as a <a href="https://scikit-learn.org/stable/modules/model_evaluation.html#from-binary-to-multiclass-and-multilabel">&ldquo;collection of binary problems, one for each class&rdquo;</a>, i.e., identify if a book has 1 to 5 stars is the same as finding out if it should have 1 star or not. If yes, obiviously it has 1 star and the problem is solved. If not, it should have 2 stars or more. For 2 stars, the same. Either the book has 2 starts or it belongs to one of the other subsequent classes (3, 4 or 5). If it has not 2, it will have 3 or more. And so on. In this way, we split the task of classifying a sample in one of 5 classes into 5 binary problems and we are able to calculate the metrics for each class. Then, we only need to combine or average the separated metrics into one, producing the final result.</p>
+<p>So, let&rsquo;s consider the samples with 1 star, for example. We will treat the other classes as &ldquo;2 or more&rdquo;. Here how the confusion matrix would look like:</p>
+
+
+<img src="/images/metrics_classif/2_more.png"  width="70%" style="max-width: 70%;margin: 0% 15%" />
+
+
+<p>Now, calculating precision, recall, and f1-score for the class &ldquo;1 star&rdquo;, we have:</p>
+<p>$$ Precision = \frac{ 15 }{ 15 + 3} = \frac{15}{18} \approx 83 \% $$
+$$ Recall = \frac{ 15 }{15 + 5} = \frac{15}{20} = 75 \% $$
+$$ F_{1} = \frac{ 2 \cdot 0.83 \cdot 0.75 }{ 0.83 + 0.75}  \approx 79 \% $$</p>
+<p>Repeating this process with each one of the remaining classes, there will be a total of 5 values for each one of these metrics, one for each star, as shown below:</p>
+<p>$$ Precision_{1star} = \frac{ 15 }{ 18 }  \approx 83 \% \quad\quad
+Recall_{1star} = \frac{ 15 }{ 20 }  = 75 \% \quad\quad
+F_{11star} = \frac{ 2 \cdot 0.83 \cdot 0.75 }{ 0.83 + 0.75}  \approx 79 \% $$</p>
+<p>$$ Precision_{2stars} = \frac{ 14 }{ 24 }  \approx 58 \% \quad\quad
+Recall_{2stars} = \frac{ 14 }{ 16 }  \approx 87 \% \quad\quad
+F_{12stars} = \frac{ 2 \cdot 0.58 \cdot 0.87 }{ 0.58 + 0.87}  \approx 70 \% $$</p>
+<p>$$ Precision_{3stars} = \frac{ 10 }{ 14 }  \approx 71 \% \quad\quad
+Recall_{3stars} = \frac{ 10 }{ 24 }  \approx 42 \% \quad\quad
+F_{13stars} = \frac{ 2 \cdot 0.71 \cdot 0.42 }{ 0.71 + 0.42}  \approx 53 \% $$</p>
+<p>$$ Precision_{4stars} = \frac{ 12 }{ 22 }  \approx 54 \% \quad\quad
+Recall_{4stars} = \frac{ 12 }{ 12 }  = 100 \% \quad\quad
+F_{14stars} = \frac{ 2 \cdot 0.54 \cdot 1 }{ 0.54 + 1}  \approx 70 \% $$</p>
+<p>$$ Precision_{5stars} = \frac{ 17 }{ 22 }  \approx 77 \% \quad\quad
+Recall_{5stars} = \frac{ 17 }{ 28 }  \approx 60 \% \quad\quad
+F_{15stars} = \frac{ 2 \cdot 0.77 \cdot 0.6 }{ 0.77 + 0.6}  \approx 67 \% $$</p>
+<h2 id="calculating-precision-and-recall-using-sets-intersection">Calculating precision and recall using sets intersection</h2>
+<p>It is interesting to show that precision and recall can also be calculated using sets intersection. Consider some vectors representing actual and predicted classes as two sets with the labels:</p>
+
+
+    <p align="center">
+      Actual &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> [1, 2, 0, 3, 4, 1, 1, 1, 0, 0, 3, 3, 2, 2, 4, 4, 0, 1, 2] </br>
+      Predicted -> [1, 0, 0, 3, 1, 1, 0, 1, 1, 1, 1, 3, 0, 2, 1, 4, 0, 0, 2]
+    </p>
+
+
+
+<p>Precision and recall can be calculated for each class like this:</p>
+<p>$$ Precision = \frac{|A \cap B|}{|B|} $$
+$$ Recall = \frac{|A \cap B|}{|A|} $$</p>
+<p><strong>A</strong> stores all the values from one specific class occurring in the actual values vector.</p>
+<p><strong>B</strong> stores all the values from one specific class occurring in the predicted values vector.</p>
+<p>So, for class &ldquo;1&rdquo;, for instance:</p>
+<p>
+
+
+    <p align="center">
+      Actual &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;->
+        [<span style="color: green;font-weight:bold">1</span>, 
+        2, 
+        0, 
+        3, 
+        4, 
+        <span style="color: green;font-weight:bold">1</span>, 
+        <span style="color: green;font-weight:bold">1</span>, 
+        <span style="color: green;font-weight:bold">1</span>, 
+        0, 
+        0, 
+        3, 
+        3,
+        2, 
+        2, 
+        4, 
+        4, 
+        0, 
+        <span style="color: green;font-weight:bold">1</span>, 
+        2] </br>
+      Predicted ->
+        [<span style="color: red;font-weight:bold">1</span>, 
+        0, 
+        0, 
+        3, 
+        <span style="color: red;font-weight:bold">1</span>, 
+        <span style="color: red;font-weight:bold">1</span>, 
+        0, 
+        <span style="color: red;font-weight:bold">1</span>, 
+        <span style="color: red;font-weight:bold">1</span>, 
+        <span style="color: red;font-weight:bold">1</span>, 
+        <span style="color: red;font-weight:bold">1</span>, 
+        3,
+        0, 
+        2, 
+        <span style="color: red;font-weight:bold">1</span>, 
+        4, 
+        0, 
+        3, 
+        2] </br>
+    </p>
+    <p align="center">
+      A -> [1, 1, 1, 1, 1] </br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B -> [1, 1, 1, 1, 1, 1, 1, 1]
+    </p>
+
+
+
+So, the intersection of <strong>A</strong> and <strong>B</strong> represents the number of predictions of class &ldquo;1&rdquo; that are correct, i.e., true positives.</p>
+<p>The number of elements in <strong>A</strong> represents the number of samples of the positive class, in this case, the class &ldquo;1&rdquo;.</p>
+<p>The number of elements in <strong>B</strong> represents the number of predictions assigned with the positive class label (&ldquo;1&rdquo;, in this case).</p>
+<p>With that in mind, it is clear why the formulas above allow us calculate precision and recall. We are dividing the number of true positives by the number of true positives plus the number of false positives (samples that were assigned &ldquo;1&rdquo; but are from another class) i.e., precision, and dividing the true positives by the number of samples that are actually from class &ldquo;1&rdquo;, i.e., the recall.</p>
+<hr>
+<p>Now, there are 15 values representing the performance of the predictions. It&rsquo;s time to combine them to produce one single value for each one of the metrics. These strategies use the sets calculation above.</p>
+<h2 id="averaging-precision-recall-and-f1-score">Averaging precision, recall and f1-score</h2>
+<p>As shown above, in classification tasks with more than 2 classes, each metric will have one value per class. But real-world problems can exceed dozens of classes easily and understanding a model performance with hundred of values will become increasingly difficult. Because of that, some strategies to combine the results for each class exist. Multiclass problems usually use three ways to make this combination. They are very common (scikit-learn support them, for instance) and simple to be understood. Let&rsquo;s check them.</p>
+<h3 id="micro-average">Micro average</h3>
+<p>Of the 3 strategies, the only one that does not use a summation is the micro average. Its calculation basically uses the concept of sets intersection presented previously to determine the value of each metric. According to scikit-learn, &ldquo;micro-averaging may be preferred in multilabel settings, including multiclass classification where a majority class is to be ignored.&rdquo; So, the definition is basically:</p>
+<p>|micro|</p>
+<p>For our example, the vectors with actual and predicted labels look like this:</p>
+
+
+
+    <p align="center">
+      Actual &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> 
+      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, </br>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, </br>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, </br>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, </br>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5] </br>
+      Predicted &nbsp;-> [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 3, 5, </br>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 3, 3, 3, 3, </br>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      3, 3, 3, 3, 3, 3, 1, 2, 2, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, </br>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, </br>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      5, 5, 5, 5, 5, 5, 5, 5, 5, 2, 2, 2, 2, 2, 3, 3, 3, 4, 4, 4]
+    </p>
+
+
+<p>The intersection (Actual ∩ Predicted) is represented by equal elements at the same position in both vectors. The result is:</p>
+
+
+
+    <p align="center">
+      Actual ∩ Predicted -> 
+      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]</br>
+    </p>
+
+
+
+<p>So, the metrics using micro-average are:</p>
+<p>$$ Precision_{Micro} = \frac{ |Actual \cap Predicted|}{ |Predicted| } = \frac{68}{100} = 68\% $$
+$$ Recall_{Micro} = \frac{ |Actual \cap Predicted|}{ |Actual| } = \frac{68}{100} = 68\% $$
+$$ F_{1Micro} = \frac{ 2 \cdot 0.68 \cdot 0.68 }{ 0.68 + 0.68} = \frac{0.924}{1.36} \approx 68 \% $$</p>
+<h3 id="macro-average">Macro average</h3>
+<p>The second way to combine the metrics is by &ldquo;macro-averaging&rdquo; them. It works simply calculating the mean of the values giving the same weight to all the classes. According to the <a href="https://scikit-learn.org/stable/modules/model_evaluation.html">sklearn documentation</a>, in problems where there are classes with a low frequency, the use of the macro average strategy may highlight their performance. However, attach the same level of importance to all classes is often wrong. The final result could be such that the low performance of infrequent classes might be &ldquo;over-emphasized&rdquo;.</p>
+<p>Although there are issues using macro-average in situations where the data is unevenly distributed, this strategy could be used when the difference among the number of samples for each class is not so big.</p>
+<p>Below, the macro-average formula:</p>
+<p>$$
+Macro \: average = \frac{1}{|L|} \sum_{l \in L} M(y_{l}, \hat{y_{l}})
+$$</p>
+<p>Where:</p>
+<ul>
+<li><em>L</em> is the set of labels;</li>
+<li><em>M</em> is the metric;</li>
+<li><em>y</em> is the set of true labels;</li>
+<li><em>ŷ</em> is the set of predicted labels;</li>
+<li>
+ <i>y<sub>l</sub></i> 
+ is the subset of <em>y</em> with label <em>l</em>;</li>
+<li>
+ <i>ŷ<sub>l</sub></i> 
+ is the subset of <em>ŷ</em> with label <em>l</em>.</li>
+</ul>
+<p>For our example, macro-averaging the metrics will provide the following results:</p>
+<p>$$ Precision_{Macro} = \frac{ 0.83 + 0.58 + 0.71 + 0.54 + 0.77 }{ 5 } \approx 69\% $$
+$$ Recall_{Macro} = \frac{ 0.75 + 0.87 + 0.42 + 1 + 0.6}{ 5 } \approx 73\% $$
+$$ F_{1Macro} = \frac{ 0.79 + 0.7 + 0.53 + 0.7 + 0.67 }{ 5 }  \approx 68 \% $$</p>
+<h3 id="weighted-average">Weighted average</h3>
+<p>The weighted average combines the metrics in such a way that the frequency of each class in the true samples is taken into account, i.e., the metric score for each class is weighted according to its presence in the true labels vector. Using this technique, classes that have more samples have a greater influence in the final result than classes with few samples. So, the result is calculated proportionally to the distribution of the classes.</p>
+<p>The formula for this strategy is:</p>
+<p>$$
+Weighted \: average = \frac{1}{\sum_{l \in L} |y_{l}|} \sum_{l \in L} |y_{l}| M(y_{l}, \hat{y_{l}})
+$$</p>
+<p>Where:</p>
+<ul>
+<li><em>L</em> is the set of labels;</li>
+<li><em>M</em> is the metric;</li>
+<li><em>y</em> is the set of true labels;</li>
+<li><em>ŷ</em> is the set of predicted labels;</li>
+<li>
+ <i>y<sub>l</sub></i> 
+ is the subset of <em>y</em> with label <em>l</em>;</li>
+<li>
+ <i>ŷ<sub>l</sub></i> 
+ is the subset of <em>ŷ</em> with label <em>l</em>.</li>
+</ul>
+<p>For our example, combine the obtained metrics using weighted average results in:</p>
+<p>$$ Precision_{Weighted} = \frac{1}{ 100 } \cdot (20 \cdot 0.83 + 16 \cdot 0.58 + 24 \cdot 0.71 + 12 \cdot 0.54 + 28 \cdot 0.77) \approx 71\% $$
+$$ Recall_{Weighted} = \frac{1}{ 100 } \cdot (20 \cdot 0.75 + 16 \cdot 0.87 + 24 \cdot 0.42 + 12 \cdot 1 + 28 \cdot 0.6) \approx 68\% $$
+$$ F_{1Weighted} = \frac{1}{ 100 } \cdot (20 \cdot 0.79 + 16 \cdot 0.7 + 24 \cdot 0.53 + 12 \cdot 0.7 + 28 \cdot 0.67) \approx 68\% $$</p>
+<h2 id="multilabel-classification-evaluation">Multilabel classification evaluation</h2>
+<p>The last type of classification task is called multilabel, where each sample could be associated with more than one label. One example of multilabel classification is musical genres tagging in platforms such as <a href="https://www.last.fm">last.fm</a>.</p>
+<p>As shown before, there are two usual forms to make multilabel classification: Binary relevance and Label powerset. Let&rsquo;s focus on evaluating a problem that uses the first option because is the most common way to deal with a multilabel task and it provides an efficient and flexible way to train and test the model.</p>
+<p>So, imagine that one want to create a model that tags automatically the genre of some bands. There are uncountable musical genres. For simplicity, let&rsquo;s use only five genres (Eletronic, Folk, Instrumental, Rap and Rock). Based on the tags provided by last.fm, the dataset would look like that:</p>
+
+
+<style>
+table, th, td {
+	width: 100%;
+  border: 1px solid #bebebe;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+}
+</style>
+
+
+
+<table>
+<thead>
+<tr>
+<th>Band/Artist</th>
+<th>Eletronic</th>
+<th>Folk</th>
+<th>Instrumental</th>
+<th>Rap</th>
+<th style="text-align:center">Rock</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bon Iver</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td>Beastie Boys</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td>Linkin Park</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td>twenty one pilots</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td style="text-align:center">&hellip;</td>
+</tr>
+</tbody>
+</table>
+<p>So, the model output for each sample will be composed of five values, one for each genre we are predicting. But how to evaluate this result? Let&rsquo;s check out some methods.</p>
+<h3 id="evalutating-results-from-multilabel-models">Evalutating results from multilabel models</h3>
+<h4 id="samples-average">Samples average</h4>
+<p>This method is another way to average the three metrics shown before (precision, recall, and f1-score), but it is destined to multilabel tasks only. It works calculating the metric for each pair of actual and predicted values for each sample in the test data, resulting in a unique averaged value. The formula is:</p>
+<p>$$
+Samples\: average = \frac{1}{|S|} \sum_{s \in S} M(y_{s}, \hat{y_{s}})
+$$</p>
+<p>Where:</p>
+<ul>
+<li><em>S</em> is the set of samples;</li>
+<li><em>M</em> is the metric;</li>
+<li>
+ <i>y<sub>s</sub></i> 
+ is the sth sample of <em>y</em>;</li>
+<li>
+ <i>ŷ<sub>s</sub></i> 
+ is the sth sample of <em>ŷ</em>.</li>
+</ul>
+<p>So, for the four bands above, a model could output something like this:</p>
+<table>
+<thead>
+<tr>
+<th>Band/Artist</th>
+<th>Eletronic</th>
+<th>Folk</th>
+<th>Instrumental</th>
+<th>Rap</th>
+<th>Rock</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bon Iver</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Beastie Boys</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Linkin Park</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>twenty one pilots</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>And for each sample, precision, recall, and f1-score are calculated. So, for the first sample (&ldquo;Bon Iver&rdquo;), the metrics are:</p>
+<p>$$ Precision_{Bon\:Iver} = \frac{TP}{TP + FP} = \frac{|\{1,1,0,0,0\} \cap \{1,0,0,1,0\}|}{|\text{n for each n} \in \{ 1, 0, 0, 1, 0 \} \text{where n = 1}|} =\frac{1}{2} = 50 \% $$
+$$ Recall_{Bon\:Iver} = \frac{TP}{TP + FN} = \frac{|\{1,1,0,0,0\} \cap \{1,0,0,1,0\}|}{|\text{n for each n} \in \{ 1, 1, 0, 0, 0 \} \text{where n = 1}|} =\frac{1}{2} = 50 \% $$
+$$ F_{1Bon\:Iver} = \frac{2 \cdot 0.5 \cdot 0.5}{0.5 + 0.5} = 50 \% $$</p>
+<p>Calculating the metrics for the other three artists and combining them:</p>
+<p>$$ Precision_{Samples} = \frac{1}{4} (0.5 + 0.667 + 1 + 0.75) \approx 73 \% $$
+$$ Recall_{Samples} = \frac{1}{4} (0.5 + 0.667 + 1 + 1) \approx 79 \% $$
+$$ F_{1Samples} = \frac{2 \cdot 0.73 \cdot 0.79 }{0.73 + 0.79} \approx 76 \% $$</p>
+<h4 id="hamming-loss">Hamming Loss</h4>
+<p>Hamming Loss is another strategy to evaluate multilabel models' results. It is defined as the fraction of the labels that are
+wrongly predicted. So, it basically checks how many values in the predictions vector are different from the actual values.</p>
+<p>The formula is:</p>
+<p>$$
+Hamming\:Loss = \frac{1}{n_{labels}} \sum_{j = 0}^{n_{labels} - 1} 1, \text{if} \: y_{j} \neq \hat{y_{j}}
+$$</p>
+<p>For our example, the actual and predicted vectors are like this:</p>
+<p>
+
+    <p align="center">
+      Actual &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;->
+        [<span style="color: green;font-weight:bold">1</span>, 
+        <span style="color: red;font-weight:bold">1</span>, 
+        <span style="color: green;font-weight:bold">0</span>, 
+        <span style="color: red;font-weight:bold">0</span>, 
+        <span style="color: green;font-weight:bold">0</span>, 
+        <span style="color: green;font-weight:bold">0</span>, 
+        <span style="color: red;font-weight:bold">0</span>, 
+        <span style="color: green;font-weight:bold">1</span>, 
+        <span style="color: red;font-weight:bold">1</span>, 
+        <span style="color: green;font-weight:bold">1</span>, 
+        <span style="color: green;font-weight:bold">1</span>, 
+        <span style="color: green;font-weight:bold">0</span>, 
+        <span style="color: green;font-weight:bold">1</span>, 
+        <span style="color: green;font-weight:bold">1</span>, 
+        <span style="color: green;font-weight:bold">1</span>, 
+        <span style="color: green;font-weight:bold">1</span>, 
+        <span style="color: red;font-weight:bold">0</span>, 
+        <span style="color: green;font-weight:bold">0</span>, 
+        <span style="color: green;font-weight:bold">1</span>, 
+        <span style="color: green;font-weight:bold">1</span>
+        ] </br>
+      Predicted ->
+        [<span style="color: green;font-weight:bold">1</span>, 
+        <span style="color: red;font-weight:bold">0</span>, 
+        <span style="color: green;font-weight:bold">0</span>, 
+        <span style="color: red;font-weight:bold">1</span>, 
+        <span style="color: green;font-weight:bold">0</span>, 
+        <span style="color: green;font-weight:bold">0</span>, 
+        <span style="color: red;font-weight:bold">1</span>, 
+        <span style="color: green;font-weight:bold">1</span>, 
+        <span style="color: red;font-weight:bold">0</span>, 
+        <span style="color: green;font-weight:bold">1</span>, 
+        <span style="color: green;font-weight:bold">1</span>, 
+        <span style="color: green;font-weight:bold">0</span>, 
+        <span style="color: green;font-weight:bold">1</span>, 
+        <span style="color: green;font-weight:bold">1</span>, 
+        <span style="color: green;font-weight:bold">1</span>, 
+        <span style="color: green;font-weight:bold">1</span>, 
+        <span style="color: red;font-weight:bold">1</span>, 
+        <span style="color: green;font-weight:bold">0</span>, 
+        <span style="color: green;font-weight:bold">1</span>, 
+        <span style="color: green;font-weight:bold">1</span>
+        ] </br>
+    </p>
+
+
+
+And the Hamming Loss:</p>
+<p>$$ Hamming \: Loss = \frac{5}{20} = 0.25 = 25 \% $$</p>
+<h1 id="conclusion">Conclusion</h1>
+<p>This article provided an introduction to some essential concepts involving the basics of evaluating
+classification problems. Unfortunately, not every single existing metric was shown here.
+There are dozen of metrics that help us to understand and analize the performance of a machine learning
+algorithm. But understanding deeply the difference among the three types of classification, the meaning
+of True/False Positives/Negatives and how they can be related is already a huge step to be able to grasp more advanced topics.</p>
+<p>I hope that the three main metrics used in classification (precision, recall, and f1-score) are clearer to you after reading the article.
+And as always, any kind of feedback is welcome.</p>
+<h1 id="references-and-further-readings">References and Further Readings</h1>
+<ul>
+<li><a href="https://scikit-learn.org/stable/modules/model_evaluation.html">scikit-learn</a> (Documentation)</li>
+<li><a href="https://developers.google.com/machine-learning/crash-course/classification/true-false-positive-negative">Classification: True vs. False and Positive vs. Negative</a> (Google ML Crash Course)</li>
+<li><a href="https://www.youtube.com/watch?v=Kdsp6soqA7o">Machine Learning Fundamentals: The Confusion Matrix</a> (YouTube video)</li>
+<li><a href="https://towardsdatascience.com/journey-to-the-center-of-multi-label-classification-384c40229bff">Deep dive into multi-label classification..!</a> (Medium article)</li>
+</ul>
+<ul class="pa0">
+  
+   <li class="list">
+     <a href="/tags/metrics" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">metrics</a>
+   </li>
+  
+   <li class="list">
+     <a href="/tags/machine-learning" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">machine learning</a>
+   </li>
+  
+   <li class="list">
+     <a href="/tags/classification" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">classification</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.0/dist/katex.min.css" integrity="sha384-BdGj8xC2eZkQaxoQ8nSLefg4AV4/AwB3Fj+8SUSo7pnKP6Eoy18liIKTPn9oBYNG" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.0/dist/katex.min.js" integrity="sha384-JiKN5O8x9Hhs/UE5cT5AAJqieYlOZbGT3CHws/y97o3ty4R7/O5poG9F3JoiOYw1" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.0/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://example.com" >
+    &copy;  no brAIner 2021 
+  </a>
+    <div>
+
+
+
+
+
+
+
+<a href="https://www.linkedin.com/in/joaorobson/" target="_blank" class="link-transition linkedin link dib z-999 pt3 pt0-l mr1" title="LinkedIn link" rel="noopener" aria-label="follow on LinkedIn——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+<a href="https://github.com/joaorobson" target="_blank" class="link-transition github link dib z-999 pt3 pt0-l mr1" title="Github link" rel="noopener" aria-label="follow on Github——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <path d="M256,32C132.3,32,32,134.8,32,261.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1   c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8c-10.2-26.5-24.9-33.6-24.9-33.6c-20.3-14.3,1.5-14,1.5-14   c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5   c0-25.1,8.7-45.6,23-61.6c-2.3-5.8-10-29.2,2.2-60.8c0,0,18.8-6.2,61.6,23.5c17.9-5.1,37-7.6,56.1-7.7c19,0.1,38.2,2.6,56.1,7.7   c42.8-29.7,61.5-23.5,61.5-23.5c12.2,31.6,4.5,55,2.2,60.8c14.3,16.1,23,36.6,23,61.6c0,88.2-52.4,107.6-102.3,113.3   c8,7.1,15.2,21.1,15.2,42.5c0,30.7-0.3,55.5-0.3,63c0,6.1,4,13.3,15.4,11C415.9,449.1,480,363.1,480,261.7   C480,134.8,379.7,32,256,32z"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

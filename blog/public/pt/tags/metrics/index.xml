@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>metrics on no brAIner </title>
+    <link>https://example.com/pt/tags/metrics/</link>
+    <description>Recent content in metrics on no brAIner </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 04 May 2020 10:42:42 -4200</lastBuildDate><atom:link href="https://example.com/pt/tags/metrics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Métricas essencias para tarefas de classificação</title>
+      <link>https://example.com/pt/post/metrics-classification/</link>
+      <pubDate>Mon, 04 May 2020 10:42:42 -4200</pubDate>
+      
+      <guid>https://example.com/pt/post/metrics-classification/</guid>
+      <description>Introdução Um problema de classificação em Machine Learning se refere à tarefa de predizer a classe de uma amostra dado suas características (&amp;quot;features&amp;quot;). Normalmente, esses problemas são dividos em três categorias: classificação binária, multiclasse e multi-rótulo (&amp;quot;multilabel&amp;quot;).
+A diferença é simples. Quando o problema é formado por apenas duas classes, como por exemplo, predizer se um livro é de ficção ou não ficção ou se uma notícia é falsa ou não, ele é chamado de classificação binária.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Métricas essencias para tarefas de classificação | no brAIner </title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Introdução Um problema de classificação em Machine Learning se refere à tarefa de predizer a classe de uma amostra dado suas características (&quot;features&quot;). Normalmente, esses problemas são dividos em três categorias: classificação binária, multiclasse e multi-rótulo (&quot;multilabel&quot;).
+A diferença é simples. Quando o problema é formado por apenas duas classes, como por exemplo, predizer se um livro é de ficção ou não ficção ou se uma notícia é falsa ou não, ele é chamado de classificação binária.">
+    <meta name="generator" content="Hugo 0.81.0" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+
+  
+  
+    <link rel="stylesheet" href="/ananke/dist/main.css_5c99d70a7725bacd4c701e995b969fea.css" >
+  
+
+
+
+  <link rel="stylesheet" href="/css/custom.css">
+
+
+    
+      
+
+    
+
+    
+    
+    <meta property="og:title" content="Métricas essencias para tarefas de classificação" />
+<meta property="og:description" content="Introdução Um problema de classificação em Machine Learning se refere à tarefa de predizer a classe de uma amostra dado suas características (&quot;features&quot;). Normalmente, esses problemas são dividos em três categorias: classificação binária, multiclasse e multi-rótulo (&quot;multilabel&quot;).
+A diferença é simples. Quando o problema é formado por apenas duas classes, como por exemplo, predizer se um livro é de ficção ou não ficção ou se uma notícia é falsa ou não, ele é chamado de classificação binária." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/pt/post/metrics-classification/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2020-05-04T10:42:42-42:00" />
+<meta property="article:modified_time" content="2020-05-04T10:42:42-42:00" /><meta property="og:site_name" content="no brAIner " />
+
+<meta itemprop="name" content="Métricas essencias para tarefas de classificação">
+<meta itemprop="description" content="Introdução Um problema de classificação em Machine Learning se refere à tarefa de predizer a classe de uma amostra dado suas características (&quot;features&quot;). Normalmente, esses problemas são dividos em três categorias: classificação binária, multiclasse e multi-rótulo (&quot;multilabel&quot;).
+A diferença é simples. Quando o problema é formado por apenas duas classes, como por exemplo, predizer se um livro é de ficção ou não ficção ou se uma notícia é falsa ou não, ele é chamado de classificação binária."><meta itemprop="datePublished" content="2020-05-04T10:42:42-42:00" />
+<meta itemprop="dateModified" content="2020-05-04T10:42:42-42:00" />
+<meta itemprop="wordCount" content="4570">
+<meta itemprop="keywords" content="metrics,machine learning,classification," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Métricas essencias para tarefas de classificação"/>
+<meta name="twitter:description" content="Introdução Um problema de classificação em Machine Learning se refere à tarefa de predizer a classe de uma amostra dado suas características (&quot;features&quot;). Normalmente, esses problemas são dividos em três categorias: classificação binária, multiclasse e multi-rótulo (&quot;multilabel&quot;).
+A diferença é simples. Quando o problema é formado por apenas duas classes, como por exemplo, predizer se um livro é de ficção ou não ficção ou se uma notícia é falsa ou não, ele é chamado de classificação binária."/>
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  
+  
+  <header class="cover bg-top" style="background-image: url('https://example.com/images/metrics.jpg');">
+    <div class="pb3-m pb6-l bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/pt/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        no brAIner 
+      
+    </a>
+    <div class="flex-l items-center">
+      
+<h4></h4>
+<ul class="pl0 mr3">
+    
+    <li class="list f5 f4-ns fw4 dib pr3">
+        <a class="hover-white no-underline white-90" href="/post/metrics-classification/">en</a>
+    </li>
+    
+</ul>
+
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/pt/post/" title="Artigos page">
+              Artigos
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/pt/about/" title="Sobre mim page">
+              Sobre mim
+            </a>
+          </li>
+          
+        </ul>
+      
+      
+
+
+
+
+
+
+
+<a href="https://www.linkedin.com/in/joaorobson/" target="_blank" class="link-transition linkedin link dib z-999 pt3 pt0-l mr1" title="LinkedIn link" rel="noopener" aria-label="follow on LinkedIn——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+<a href="https://github.com/joaorobson" target="_blank" class="link-transition github link dib z-999 pt3 pt0-l mr1" title="Github link" rel="noopener" aria-label="follow on Github——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <path d="M256,32C132.3,32,32,134.8,32,261.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1   c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8c-10.2-26.5-24.9-33.6-24.9-33.6c-20.3-14.3,1.5-14,1.5-14   c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5   c0-25.1,8.7-45.6,23-61.6c-2.3-5.8-10-29.2,2.2-60.8c0,0,18.8-6.2,61.6,23.5c17.9-5.1,37-7.6,56.1-7.7c19,0.1,38.2,2.6,56.1,7.7   c42.8-29.7,61.5-23.5,61.5-23.5c12.2,31.6,4.5,55,2.2,60.8c14.3,16.1,23,36.6,23,61.6c0,88.2-52.4,107.6-102.3,113.3   c8,7.1,15.2,21.1,15.2,42.5c0,30.7-0.3,55.5-0.3,63c0,6.1,4,13.3,15.4,11C415.9,449.1,480,363.1,480,261.7   C480,134.8,379.7,32,256,32z"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <h1 class="f2 f1-l fw2 white-90 mb0 lh-title">Métricas essencias para tarefas de classificação</h1>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked">
+          
+        ARTIGOS
+      </aside>
+      
+
+
+
+
+  <div id="sharing" class="mt3">
+
+    
+    <a href="https://www.facebook.com/sharer.php?u=https://example.com/pt/post/metrics-classification/" class="facebook no-underline" aria-label="share on Facebook">
+      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M28.765,50.32h6.744V33.998h4.499l0.596-5.624h-5.095  l0.007-2.816c0-1.466,0.14-2.253,2.244-2.253h2.812V17.68h-4.5c-5.405,0-7.307,2.729-7.307,7.317v3.377h-3.369v5.625h3.369V50.32z   M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
+
+    </a>
+
+    
+    
+    <a href="https://twitter.com/share?url=https://example.com/pt/post/metrics-classification/&amp;text=M%c3%a9tricas%20essencias%20para%20tarefas%20de%20classifica%c3%a7%c3%a3o" class="twitter no-underline" aria-label="share on Twitter">
+      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+    </a>
+
+    
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://example.com/pt/post/metrics-classification/&amp;title=M%c3%a9tricas%20essencias%20para%20tarefas%20de%20classifica%c3%a7%c3%a3o" class="linkedin no-underline" aria-label="share on LinkedIn">
+      <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+    </a>
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Métricas essencias para tarefas de classificação</h1>
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2020-05-04T10:42:42-42:00">May 4, 2020</time>
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><h2 id="introdução">Introdução</h2>
+<p>Um problema de classificação em Machine Learning se refere à tarefa de predizer a classe de uma amostra dado suas características (&quot;<em>features</em>&quot;). Normalmente, esses problemas são dividos em três categorias: classificação binária, multiclasse e multi-rótulo (&quot;<em>multilabel</em>&quot;).</p>
+<p>A diferença é simples. Quando o problema é formado por apenas duas classes, como por exemplo, predizer se  um livro é de ficção ou não ficção ou se uma notícia é falsa ou não, ele é chamado de classificação binária. De outra forma, quando há três ou mais classes possíveis, o problema pode se tratar de classificação multiclasse ou multi-rótulo.</p>
+<p>Tarefas multiclasse acontecem quando só se pode desginar uma classe para cada amostra. Um exemplo disso é o problema clássico de Machine Learning que envolve rotular os dígitos do  <a href="http://yann.lecun.com/exdb/mnist/"><em>dataset</em> MNIST</a>. Esse problema envolve predizer um número entre 0 e 9 baseado na imagem de um dígito escrito à mão, ou seja, de 10 classes possíveis, pode-se desingnar apenas um desses números à amostra.</p>
+<p>A generalização dessa situação, onde não há limites ao número de classes que pode ser designada a uma amostra, em outras palavras, onde se pode rotular uma amostra com um, três ou cem classes (ou qualquer que seja o número total de classes distintas do problema), é conhecido como classificação multi-rótulo. Ela acontece, por exemplo, quando se quer classificar gêneros musicais de uma banda, o que pode ser feito incluindo mais de uma classe para cada artista.</p>
+<h2 id="mas-na-prática-qual-a-diferença-entre-elas">Mas na prática, qual a diferença entre elas?</h2>
+<p>Basicamente, o que irá diferenciar as categorias de classificação é a forma como o dado em si é representado.</p>
+<p>(Os algoritmos usados para realizar predições usando os dados, assim como a forma que suas saídas são produzidas, tendem a variar também, porém isso leva a uma discussão mais complexa. Um bom ponto de partida para se aprofundar nesses detalhes é <a href="https://scikit-learn.org/stable/modules/multiclass.html">essa página</a> da documentação do sklearn, uma ferramenta bastante usada no universo de ML. Lá, há um resumo excelente sobre estratégias e modelos usados em classificação multiclasse e multi-rótulo.)</p>
+<p>Para <strong>problemas binários</strong>, o dado é geralmente representado por &ldquo;1&rsquo;s&rdquo; e &ldquo;0&rsquo;s&rdquo;, sendo &ldquo;1&rdquo; o valor para uma amostra do que é conhecido como classe positiva e &ldquo;0&rdquo; para a classe negativa, assim:</p>
+
+
+
+    <p align="center">
+      [1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0]
+    </p>
+
+
+
+<p>É importante dizer que esses valores podem ser qualquer coisa (&ldquo;Sim&rdquo; e &ldquo;Não&rdquo;, &ldquo;Bom&rdquo; e &ldquo;Ruim&rdquo;, &ldquo;Azul&rdquo; e &ldquo;Vermelho&rdquo;, etc.), contanto que sejam distintos.</p>
+<p>Para <strong>problemas multiclasse</strong>, cada rótulo é representado por um valor distinto também, geralmente variando de 0 a n-1, n sendo o número de classes distintas. Uma possível representação do dado para um problema com 5 classes é o seguinte vetor:</p>
+
+
+
+    <p align="center">
+      [2, 3, 2, 1, 0, 4, 4, 0, 1, 2, 4, 4, 2, 1, 1, 3, 2, 2, 4]
+    </p>
+
+
+<p>Em <strong>tarefas multi-rótulo</strong>, as coisas se tornam um pouco mais complexas. Nesses problemas, existem duas estratégias geralmente usadas: <strong>Revelância Binária</strong> e <strong>Powerset dos rótulos</strong>.</p>
+<p>Na técnica da &ldquo;Revelância Binária&rdquo;, o dado é formado por um vetor com n posições (n sendo o número de classes distintas). Para cada posição, pode-se atribuir dois valores: um apontando a ocorrência da classe representada por aquele índice naquela amostra e outro indicando ausência. Normalmente, esses valores são &ldquo;1&rdquo; e &ldquo;0&rdquo;. Então, imaginando que existem 5 classes no nosso dado (&ldquo;0&rdquo;, &ldquo;1&rdquo;, &ldquo;2&rdquo;, &ldquo;3&rdquo; e &ldquo;4&rdquo;) e 10 amostras, poderíamos ter:</p>
+
+
+
+    <p align="center">
+      [[0, 1, 0, 1, 0], [1, 1, 0, 0, 0], [1, 1, 1, 1, 1], [1, 0, 0, 0, 1], [1, 1, 1, 0, 0], </br>
+       [1, 0, 0, 0, 0], [1, 1, 1, 0, 0], [1, 1, 0, 0, 0], [1, 0, 1, 0, 1], [1, 1, 1, 0, 1]]
+    </p>
+
+
+
+<p>O primeiro item na lista, por exemplo, indica que os rótulos presentes na primeira amostra são &ldquo;1&rdquo; e &ldquo;3&rdquo;.</p>
+<p>A opção do <strong>powerset de rótulos</strong> se refere à estratégia de transformar o conjunto de combinações de rótulos presentes no dado representado pelo método da revelância binária em um conjunto de rótulos distintos, isto é, transformar um problema multi-rótulo em um problema multiclasse. Tomando a lista acima como exemplo, teríamos a seguinte transformação:</p>
+
+
+    <p align="center">
+      [0, 1, 0, 1, 0] -> 0 </br>
+      [1, 0, 0, 0, 0] -> 1 </br>
+      [1, 0, 0, 0, 1] -> 2 </br>
+      [1, 0, 1, 0, 1] -> 3 </br>
+      [1, 1, 0, 0, 0] -> 4 </br>
+      [1, 1, 1, 0, 0] -> 5 </br>
+      [1, 1, 1, 0, 1] -> 6 </br>
+      [1, 1, 1, 1, 1] -> 7 
+    </p>
+
+
+<p>E o dado resultante seria:</p>
+
+
+
+    <p align="center">
+      [0, 4, 7, 2, 5, 1, 5, 4, 3, 6]
+    </p>
+
+
+
+
+<p>Outra importante diferença entre esses três tipos de classificação é a maneira como a qualidade das predições feitas é medida. Cada uma utiliza uma abordam ligeiramente diferente para calcular quão bem o modelo está performando. Vamos dar uma olhada nisso.</p>
+<h3 id="avaliação-da-classificação-binária">Avaliação da classificação binária</h3>
+<p>Um das maneiras mais básicas de se medir o quão bem um modelo prediz as classes de novas amostras é utilizando um diagrama conhecido como matriz de confusão. Ele é usado para visualizar como as classes preditas e verdadeiras estão relacionadas. Então, utilizando o exemplo de livros de ficção/não-ficção mencionados previamente, poderíamos ter uma matriz que se parece com isso:</p>
+
+
+<img src="/images/metrics_classif/conf_matrix_pt.png"  width="80%" style="max-width: 70%;margin: 0% 15%" />
+
+
+<p>As linhas agrupam o número de amostras preditas em cada classe. As colunas representam o número real de amostras presentes em cada classe. Mas como realizar conclusões a partir disso?</p>
+<p>Primeiramente, é importante se familiarizar com o conceito por trás de verdadeiros/falsos positivos e verdadeiros/falsos negativos.</p>
+<p>Verdadeiros positivos se referem a condição onde o modelo corretamente prediz a classe positiva, que em nosso exemplo é &ldquo;Ficção&rdquo;. De maneira equivalente, um verdadeiro negativo ocorre quando o modelo corretamente classifica uma amostra como sendo da classe negativa (&ldquo;Não-ficção&rdquo;).</p>
+<p>Os dois termos restantes se referem a situações onde o modelo erra. Então, um falso positivo (também conhecido como erro do tipo I) acontece quando a amostra pertence a classe negativa mas é predita como sendo da positiva. Então, quando o rótulo &ldquo;Ficção&rdquo; é dado a um livro de não-ficção, um falso positivo ocorre. O oposto, isto é, um falso negativo (ou erro do tipo II), acontece quando uma amostra da classe positiva (um livro que é de ficção) é rotulado incorretamente como um livro de não-ficção.</p>
+<p>Com isso em mente, vamos voltar ao nosso exemplo. Temos 100 livros divididos assim:</p>
+<ul>
+<li>43 livros de ficção;</li>
+<li>57 livros de não-ficção.</li>
+</ul>
+<p>O modelo predisse a maior parte dos livros na classe correta, mas alguns foram classificados de maneira incorreta. Resumindo, existem 42 verdadeiros posivitos, 10 falsos positivos, 1 falso negativo e 47 verdadeiros negativos.</p>
+<p>Ok. Mas como interpretar esse resultado? Ele é bom ou ruim? Precisamos de alguma métricas para realizar uma avaliação.</p>
+<h4 id="entendendo-acurácia-precisão-e-revocação-recall">Entendendo acurácia, precisão e revocação (recall)</h4>
+<p>Em tarefas de classificação, as métricas mais comuns são acurácia, precisão, revocação (usualmente chamada de recall) e f1-score. Elas proveem um valor numérico, de 0 a 1, que avalia a relação entre predições certas e erradas. Aqui as suas fórmulas:</p>
+<p>$$ Acurácia = \frac{ TP + TN }{ TP + TN + FP + FN }$$
+$$ Precisão = \frac{ TP }{ TP + FP }$$
+$$ Recall = \frac{ TP }{ TP + FN }$$
+$$ F_{1} = \frac{ 2 \cdot Precisão \cdot Recall }{ Precisão + Recall } $$</p>
+<p>Cada um usa uma abordagem diferente para analisar os resultados obtidos, ponderando as predições corretas e errôneas de maneiras levemente diferentes.</p>
+<p>A <strong>acurácia</strong> representa quantas predições do total foram corretas:</p>
+<p>$$ Accurácia = \frac{ 42 + 47 }{42 + 47 + 10 + 1} = \frac{89}{100} = 89 \% $$</p>
+<p>A <strong>precisão</strong> mede a porcentagem de classificações corretas de amostras posivitas em relação ao total de amostras classificadas como sendo da classe positiva.</p>
+<p>$$ Precisão = \frac{ 42 }{42 + 10} = \frac{42}{52} \approx 81 \% $$</p>
+<p>O <strong>recall</strong> segue uma abordagem semelhante à precisão, mas em vez de usar o total de amostras rotuladas como sendo da classe positiva para calcular a porcentagem, ele retorna a porcentagem de classificações corretas de amostras positivas em relação ao número total de amostras realmente positivas. Aqui está seu valor:</p>
+<p>$$ Recall = \frac{ 42 }{42 + 1} = \frac{42}{43} \approx 98 \% $$</p>
+<p>A última forma apresentada, conhecida como <strong>F1 score</strong>, avalia a <a href="https://pt.wikipedia.org/wiki/M%C3%A9dia_harm%C3%B4nica">média harmônica</a> da precisão e do recall. Para este exemplo, seu valor é:</p>
+<p>$$ F_{1} = \frac{ 2 \cdot 0.81 \cdot 0.98 }{0.81 + 0.98} = \frac{1.58}{1.79} \approx 88 \% $$</p>
+<p>Ok. Agora temos 4 valores e todos os resultados parecem estar ótimos, certo?</p>
+<p>Todos estão perto de 100%. A acurácia, por exemplo, nos diz que de 100 classes preditas, quase 90% foram corretas.</p>
+<p>Aparentemente, independentemente do problema com quem alguém estivesse lidando, esses números parecem ser o bastante para dizer que o nosso modelo está perto do melhor possível. Isso é realmente verdade? Vamos ver.</p>
+<p>Imagine que em vez de classificar livros, o modelo estivesse predizendo se o tipo de câncer de um paciente é benigno ou maligno. Mantendo os número iguais, de 43 pessoas que teriam câncer, 1 seria classificada de forma errada. Isso não é um problema tão grave. O teste poderia ser repetido para verificar o resultado. O grande problema é com os falsos positivos. De 57 pessoas com uma forma de câncer maligno, 10 (20% aproximadamente) receberiam um resultado dizendo que elas possuem uma forma de câncer menos agressiva. Isso é ruim. Imagine quantas dessas pessoas deixariam de repetir o exame e teriam consequências graves por isso.</p>
+<blockquote>
+<p>Um número &ldquo;cru&rdquo; em si não é suficiente para definir o quão bom uma predição é. O contexto do problema tem uma enorme importância em determinar as métricas a serem usadas e o que é considerado &ldquo;bom&rdquo; ou &ldquo;ruim&rdquo;.</p>
+</blockquote>
+<p>Às vezes, mais falsos negativos que falsos positivos, como no exemplo do câncer benigno/maligno, e consequentemente um recall menor que a precisão, é preferível do que o contrário. Em outras situções, atingir uma acurácia de 70% (que é melhor do que um chute com 50% de acerto) será excelente. Cada problema é único e o papel de um entusiasta ou profissional de Machine Learning é entender as métricas e usar a mais apropriada em cada contexto.</p>
+<h3 id="avaliação-da-classificação-multiclasse">Avaliação da classificação multiclasse</h3>
+<p>Imagine que se decida que, em vez de classificar os livros em ficção ou não-ficção, haverá uma classificação baseada no número de estrelas que o livro recebeu em uma loja online. Então, supondo que existam 5 classes (1 a 5 estrelas), uma matriz de confusão possível para esse problema seria assim:</p>
+
+
+<img src="/images/metrics_classif/conf_matrix2_pt.png"  width="50%" style="max-width: 50%;margin: 0% 25%" />
+
+
+<p>Repare que ela continua possuindo os 100 livros, mas existem 5 colunas e 5 linhas. Além disso, os livros estão classificados de acordo com o seu número de estrelas agora. Como os verdadeiros/falsos positivos serão medidos agora sem a existência das classes &ldquo;positiva&rdquo; e &ldquo;negativa&rdquo;? Vamos dar uma olhada.</p>
+<p>A acurácia é a métrica mais fácil de ser calculada. Como dito anteriormente, ela representa a divisão do número total de predições corretas pelo número total de amostras. Sendo assim, ao se olhar a matriz acima, todos os números na diagonal com o azul mais escuro correspondem as predições corretas porque eles representam as situações onde o modelo atribuiu a classe correta àquela amostra. Para este problema, a acurácia é:</p>
+<p>$$ Accurácia = \frac{ 15 + 14 + 10 + 12 + 17 }{100} = \frac{68}{100} = 68 \% $$</p>
+<p>Ok. Mas como calcular os valores de precisão e recall? Eles dependem do número de falsos positivos/negativos e consequentemente da existência das classes positiva/negativa.</p>
+<p>Um problema multiclasse pode ser tratado com uma extensão da classificação binária. Nós apenas precisamos considerar o problema como uma <a href="https://scikit-learn.org/stable/modules/model_evaluation.html#from-binary-to-multiclass-and-multilabel">&ldquo;coleção de problemas binários, um para cada classe&rdquo;</a>, isto é, identificar se um livro tem 1 a 5 estrelas é o mesmo que descobrir se ele deveria ter 1 estrela ou não. Se sim, ele obviamente tem 1 estrela e o problemas está resolvido. Caso contrário, ele terá 2 estrelas ou pertence a alguma das classes subsequentes (3, 4 ou 5). Se não tiver 2, terá 3 estrelas ou mais. E assim por diante. Dessa forma, dividimos a tarefa de classificar uma amostra em uma de 5 classes em 5 problemas binários e somos capazes de calcular as métricas para cada classe. Então, só necessitamos combinar ou calcular a média das métricas inviduais em uma só, produzindo o resultado final.</p>
+<p>Assim, vamos considerar as amostras com 1 estrela, por exemplo. Trataremos as outras classes como &ldquo;2 ou mais&rdquo;. A matriz de confusão ficaria assim:</p>
+
+
+<img src="/images/metrics_classif/2_more_pt.png"  width="70%" style="max-width: 70%;margin: 0% 15%" />
+
+
+<p>Agora, calculando precisão, recall e f1-score para a classe &ldquo;1 estrela&rdquo;, nós temos:</p>
+<p>$$ Precisão = \frac{ 15 }{ 15 + 3} = \frac{15}{18} \approx 83 \% $$
+$$ Recall = \frac{ 15 }{15 + 5} = \frac{15}{20} = 75 \% $$
+$$ F_{1} = \frac{ 2 \cdot 0.83 \cdot 0.75 }{ 0.83 + 0.75}  \approx 79 \% $$</p>
+<p>Repetindo esse processo com cada uma das classes restantes, obtém-se um total de 5 valores para cada uma dessas métricas, uma para cada estrela, como mostrado abaixo:</p>
+<p>$$ Precisão_{1estrela} = \frac{ 15 }{ 18 }  \approx 83 \% \quad\quad
+Recall_{1estrela} = \frac{ 15 }{ 20 }  = 75 \% \quad\quad
+F_{11estrela} = \frac{ 2 \cdot 0.83 \cdot 0.75 }{ 0.83 + 0.75}  \approx 79 \% $$</p>
+<p>$$ Precisão_{2estrelas} = \frac{ 14 }{ 24 }  \approx 58 \% \quad\quad
+Recall_{2estrelas} = \frac{ 14 }{ 16 }  \approx 87 \% \quad\quad
+F_{12estrelas} = \frac{ 2 \cdot 0.58 \cdot 0.87 }{ 0.58 + 0.87}  \approx 70 \% $$</p>
+<p>$$ Precisão_{3estrelas} = \frac{ 10 }{ 14 }  \approx 71 \% \quad\quad
+Recall_{3estrelas} = \frac{ 10 }{ 24 }  \approx 42 \% \quad\quad
+F_{13estrelas} = \frac{ 2 \cdot 0.71 \cdot 0.42 }{ 0.71 + 0.42}  \approx 53 \% $$</p>
+<p>$$ Precisão_{4estrelas} = \frac{ 12 }{ 22 }  \approx 54 \% \quad\quad
+Recall_{4estrelas} = \frac{ 12 }{ 12 }  = 100 \% \quad\quad
+F_{14estrelas} = \frac{ 2 \cdot 0.54 \cdot 1 }{ 0.54 + 1}  \approx 70 \% $$</p>
+<p>$$ Precisão_{5estrelas} = \frac{ 17 }{ 22 }  \approx 77 \% \quad\quad
+Recall_{5estrelas} = \frac{ 17 }{ 28 }  \approx 60 \% \quad\quad
+F_{15estrelas} = \frac{ 2 \cdot 0.77 \cdot 0.6 }{ 0.77 + 0.6}  \approx 67 \% $$</p>
+<hr>
+<h2 id="calculando-precisão-e-recall-usando-interseção-de-conjuntos">Calculando precisão e recall usando interseção de conjuntos</h2>
+<p>É interessante mostrar que precisão e recall também podem ser calculados utilizando interseção de conjuntos. Considere alguns vetores representando classes verdadeiras e preditas como dois conjuntos com os rótulos:</p>
+
+
+    <p align="center">
+      Verdadeiro -> [1, 2, 0, 3, 4, 1, 1, 1, 0, 0, 3, 3, 2, 2, 4, 4, 0, 1, 2] </br>
+      Predito &nbsp;&nbsp;&nbsp;&nbsp; -> [1, 0, 0, 3, 1, 1, 0, 1, 1, 1, 1, 3, 0, 2, 1, 4, 0, 0, 2]
+    </p>
+
+
+
+<p>Precisão e recall podem ser calculados para cada classe assim:</p>
+<p>$$ Precisão = \frac{|A \cap B|}{|B|} $$
+$$ Recall = \frac{|A \cap B|}{|A|} $$</p>
+<p><strong>A</strong> armazena todos os valores de uma classe específica ocorrendo no vetor de classes verdadeiras.</p>
+<p><strong>B</strong> armazena todos os valores de uma classe específica ocorrendo no vetor de classes preditas.</p>
+<p>Então, para a classe &ldquo;1&rdquo;, por exemplo:</p>
+
+
+
+    <p align="center">
+      Verdadeiro ->
+        [<span style="color: green;font-weight:bold">1</span>, 
+        2, 
+        0, 
+        3, 
+        4, 
+        <span style="color: green;font-weight:bold">1</span>, 
+        <span style="color: green;font-weight:bold">1</span>, 
+        <span style="color: green;font-weight:bold">1</span>, 
+        0, 
+        0, 
+        3, 
+        3,
+        2, 
+        2, 
+        4, 
+        4, 
+        0, 
+        <span style="color: green;font-weight:bold">1</span>, 
+        2] </br>
+      Predito &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ->
+        [<span style="color: red;font-weight:bold">1</span>, 
+        0, 
+        0, 
+        3, 
+        <span style="color: red;font-weight:bold">1</span>, 
+        <span style="color: red;font-weight:bold">1</span>, 
+        0, 
+        <span style="color: red;font-weight:bold">1</span>, 
+        <span style="color: red;font-weight:bold">1</span>, 
+        <span style="color: red;font-weight:bold">1</span>, 
+        <span style="color: red;font-weight:bold">1</span>, 
+        3,
+        0, 
+        2, 
+        <span style="color: red;font-weight:bold">1</span>, 
+        4, 
+        0, 
+        3, 
+        2] </br>
+    </p>
+    <p align="center">
+      A -> [1, 1, 1, 1, 1] </br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B -> [1, 1, 1, 1, 1, 1, 1, 1]
+    </p>
+
+
+
+<p>Então, a interseção de <strong>A</strong> e <strong>B</strong> representa o número de predições da classe &ldquo;1&rdquo; que são corretas, isto é, verdadeiros positivos.</p>
+<p>O número de elementos em <strong>A</strong> representa o número de amostras da classe positiva, nesse caso, a classe &ldquo;1&rdquo;.</p>
+<p>O número de elementos em <strong>B</strong> representa o número de predições nas quais foi atribuído o rótulo da classe positiva (&ldquo;1&rdquo;, nesse caso).</p>
+<p>Com isso em mente, é claro ver porque as fórmulas acima nos permite calcular precisão e recall. Estamos dividindo o número de verdadeiros positivos pelo número de verdadeiros positivos mais o número de falsos positivos (amostras que tiveram &ldquo;1&rdquo; atribuídas a si mas são de outra classe), ou seja, a precisão; e dividindo os verdadeiros positivos pelo número de amostras que são na verdade da classe &ldquo;1&rdquo;, ou seja, o recall.</p>
+<hr>
+<p>Agora, existem 15 valores representando a performance das predições. É hora de combiná-los para produzir um único valor para cada uma das métricas. Estas estratégias usam o cálculo envolvendo conjuntos mostrado acima.</p>
+<h2 id="calculando-as-médias-da-precisão-do-recall-e-do-f1-score">Calculando as médias da precisão, do recall e do f1-score</h2>
+<p>Como mostrado acima, em tarefas de classificação com mais de duas classes, cada métrica vai ter um valor por classe. Mas problemas do mundo real podem exceder as dezenas de classe facilmente e entender a performance de um modelo com centenas de valores se torna incrementalmente difícil. Por conta disso, algumas estratégias para combinar os resultados de cada classe existem. Problemas multiclasse normalmente usam três maneiras para realizar essa combinação. Elas são muito comuns (o scikit-learn as suportam, por exemplo) e simples de serem entendidas. Vamos dar uma olhada nelas.</p>
+<h3 id="micro-average">Micro average</h3>
+<p>Das 3 estratégias, a única que não usa um somatório é a <em>micro average</em>. Seu cálculo basicamente usa o conceito de interseção de conjuntos apresentado previamente para determinar o valor de cada métrica. De acordo com a documentação do scikit-learn, &ldquo;utilizar &ldquo;micro-averaging&rdquo; pode ser preferível em configurações multi-rótulo, incluindo classificação multiclasse onde uma classe majoritária deve ser ignorada&rdquo;.</p>
+<p>Sua definição basicamente é:</p>
+<p>$$ Micro \: average = M(y, \hat(y)) $$</p>
+<p>Onde:</p>
+<ul>
+<li><em>M</em> é a métrica;</li>
+<li><em>y</em> é o conjunto de rótulos verdadeiros;</li>
+<li><em>ŷ</em> is the set of predicted labels.</li>
+</ul>
+<p>Em nosso exemplo, os vetores com os rótulos verdadeiros e preditos se parece com:</p>
+
+
+
+    <p align="center">
+      Actual &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> 
+      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, </br>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, </br>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, </br>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, </br>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5] </br>
+      Predicted &nbsp;-> [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 3, 5, </br>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 3, 3, 3, 3, </br>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      3, 3, 3, 3, 3, 3, 1, 2, 2, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, </br>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, </br>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      5, 5, 5, 5, 5, 5, 5, 5, 5, 2, 2, 2, 2, 2, 3, 3, 3, 4, 4, 4]
+    </p>
+
+
+<p>A interseção (Verdadeiro ∩ Predito) é representada pelos elementos iguais na mesma posição em ambos os vetores. O resultado é:</p>
+
+
+
+    <p align="center">
+      Actual ∩ Predicted -> 
+      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]</br>
+    </p>
+
+
+
+<p>Então, as métricas usando micro-average são:</p>
+<p>$$ Precisão_{Micro} = \frac{ |Verdadeiro \cap Predito|}{ |Predito| } = \frac{68}{100} = 68\% $$
+$$ Recall_{Micro} = \frac{ |Verdadeiro \cap Predito|}{ |Verdadeiro| } = \frac{68}{100} = 68\% $$
+$$ F_{1Micro} = \frac{ 2 \cdot 0.68 \cdot 0.68 }{ 0.68 + 0.68} = \frac{0.924}{1.36} \approx 68 \% $$</p>
+<h3 id="macro-average">Macro average</h3>
+<p>A segunda maneira de combinar as métricas é usando &ldquo;macro-average&rdquo; nelas. Essa técnica funciona simplesmente calculando a média dos valores dando o mesmo peso para todas as classes. De acordo com a <a href="https://scikit-learn.org/stable/modules/model_evaluation.html">documentação do sklearn</a>, em problemas onde há classes com uma frequência baixa, o uso de &ldquo;macro-averaging&rdquo; pode ressaltar a perfomance delas. Entretanto, dar o mesmo nível de importância para todas as classes é frequentemente errado. Dessa forma, o resultado final pode ser tal que a perfomance baixa de classes não frequentes pode ser enfatizado demais.</p>
+<p>Embora existam problemas ao se usar macro-average em contextos onde o dado é distribuído de maneira não uniforme, essa estratégia pode ser usada em casos onde não há uma disparidade tão grande entre o número de amostras de cada classe.</p>
+<p>Abaixo, a sua fórmula:</p>
+<p>$$
+Macro \: average = \frac{1}{|L|} \sum_{l \in L} M(y_{l}, \hat{y_{l}})
+$$</p>
+<p>Onde:</p>
+<ul>
+<li><em>L</em> é o conjunto de rótulos;</li>
+<li><em>M</em> é a métrica;</li>
+<li><em>y</em> é o conjunto de rótulos verdadeiros;</li>
+<li><em>ŷ</em> é o conjunto de rótudos preditos;</li>
+<li>
+ <i>y<sub>l</sub></i> 
+ é o subconjunto de  <em>y</em> com rótulo <em>l</em>;</li>
+<li>
+ <i>ŷ<sub>l</sub></i> 
+ é o subconjunto de <em>ŷ</em> com rótulo <em>l</em>.</li>
+</ul>
+<p>Para o nosso exemplo, utilizar macro-average nas métricas provê os seguintes resultados:</p>
+<p>$$ Precisão_{Macro} = \frac{ 0.83 + 0.58 + 0.71 + 0.54 + 0.77 }{ 5 } \approx 69\% $$
+$$ Recall_{Macro} = \frac{ 0.75 + 0.87 + 0.42 + 1 + 0.6}{ 5 } \approx 73\% $$
+$$ F_{1Macro} = \frac{ 0.79 + 0.7 + 0.53 + 0.7 + 0.67 }{ 5 }  \approx 68 \% $$</p>
+<h3 id="média-ponderada-weighted-average">Média ponderada (Weighted average)</h3>
+<p>A média ponderada combina as métricas de uma maneira que a frequência de cada classe nas amostras verdadeiras é levada em conta, ou seja, o resultado da métrica para cada classe é ponderado de acordo com sua presença no vetor de rótulos verdadeiros. Usando esta técnica, classes que têm mais amostras tem uma influência maior no resultado final do que classes com menos amostras. Sendo assim, o resultado é calculado proporcionalmente a distribuição das classes.</p>
+<p>A fórmula para essa estratégia é:</p>
+<p>$$
+Weighted \: average = \frac{1}{\sum_{l \in L} |y_{l}|} \sum_{l \in L} |y_{l}| M(y_{l}, \hat{y_{l}})
+$$</p>
+<p>Onde:</p>
+<ul>
+<li><em>L</em> é o conjunto de rótulos;</li>
+<li><em>M</em> é a métrica;</li>
+<li><em>y</em> é o conjunto de rótulos verdadeiros;</li>
+<li><em>ŷ</em> é o conjunto de rótudos preditos;</li>
+<li>
+ <i>y<sub>l</sub></i> 
+ é o subconjunto de  <em>y</em> com rótulo <em>l</em>;</li>
+</ul>
+<p>Para nosso exemplo, combinar as métricas usando a média ponderada resulta em:</p>
+<p>$$ Precisão_{Weighted} = \frac{1}{ 100 } \cdot (20 \cdot 0.83 + 16 \cdot 0.58 + 24 \cdot 0.71 + 12 \cdot 0.54 + 28 \cdot 0.77) \approx 71\% $$
+$$ Recall_{Weighted} = \frac{1}{ 100 } \cdot (20 \cdot 0.75 + 16 \cdot 0.87 + 24 \cdot 0.42 + 12 \cdot 1 + 28 \cdot 0.6) \approx 68\% $$
+$$ F_{1Weighted} = \frac{1}{ 100 } \cdot (20 \cdot 0.79 + 16 \cdot 0.7 + 24 \cdot 0.53 + 12 \cdot 0.7 + 28 \cdot 0.67) \approx 68\% $$</p>
+<h2 id="avaliação-da-classificação-multi-rótulo">Avaliação da classificação multi-rótulo</h2>
+<p>O último tipo de tarefa de classificação é chamada de multi-rótulo (multilabel), onde cada amostra pode ser associada com mais de um rótulo. Um exemplo de classificação multi-rótulo são as <em>tags</em> de gêneros musicais em plataformas como a <a href="https://www.last.fm">last.fm</a>.</p>
+<p>Como mostrado anteriormente, existem duas maneiras comuns de realizar classificação multi-rótulo: revelância binária e powerset de rótulos. Vamos focar em avaliar o problema usando a primeira abordagem porque é a forma mais comum de lidar com tarefas multi-rótulo e provê uma maneira eficiente e flexível de treinar e testar o modelo.</p>
+<p>Então, imagine que se deseje criar um modelo para atribuir <em>tags</em> de gênero para algumas bandas automaticamente. Como existem incontáveis gêneros musicais, para simplificar, vamos usar apenas cinco deles (Eletrônica, Folk, Instrumental, Rap e Rock). Baseado nas <em>tags</em> providas pela last.fm, o dado seria assim:</p>
+
+
+<style>
+table, th, td {
+	width: 100%;
+  border: 1px solid #bebebe;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+}
+</style>
+
+
+
+<table>
+<thead>
+<tr>
+<th>Banda/Artista</th>
+<th>Eletrônica</th>
+<th>Folk</th>
+<th>Instrumental</th>
+<th>Rap</th>
+<th style="text-align:center">Rock</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bon Iver</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td>Beastie Boys</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td>Linkin Park</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td>twenty one pilots</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td style="text-align:center">&hellip;</td>
+</tr>
+</tbody>
+</table>
+<p>Dessa forma, a saída do modelo para cada amostra seria composta de cinco valores, um para cada gênero que está se predizendo. Mas como avaliar esse resultado? Vamos ver alguns métodos.</p>
+<h3 id="avaliando-resultados-de-modelos-multi-rótulo">Avaliando resultados de modelos multi-rótulo</h3>
+<h4 id="samples-average">Samples average</h4>
+<p>Esse método é uma outra forma de calcular a média das três métricas mostradas anteriormente (precisão, recall e f1-score), mas é destinada para tarefas multi-rótulo apenas. Ele funciona calculando a métrica para cada par de valores verdadeiros e preditos para cada amostra no dado de teste, resultando em um valor único. A fórmula é:</p>
+<p>$$
+Samples\: average = \frac{1}{|S|} \sum_{s \in S} M(y_{s}, \hat{y_{s}})
+$$</p>
+<p>Onde:</p>
+<ul>
+<li><em>S</em> é o conjunto de amostras;</li>
+<li><em>M</em> é a métrica;</li>
+<li>
+ <i>y<sub>s</sub></i> 
+ é a s-ésima amostra de <em>y</em>;</li>
+<li>
+ <i>ŷ<sub>s</sub></i> 
+ é a s-ésima amostra de <em>ŷ</em>.</li>
+</ul>
+<p>Então, para as quatro bandas acima, um modelo poderia ter como saída algo como:</p>
+<table>
+<thead>
+<tr>
+<th>Banda/Artista</th>
+<th>Eletrônica</th>
+<th>Folk</th>
+<th>Instrumental</th>
+<th>Rap</th>
+<th>Rock</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bon Iver</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Beastie Boys</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Linkin Park</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>twenty one pilots</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>E para cada amostra, precisão, recall e f1-score são calculados. Então, para a primeira amostra (&ldquo;Bon Iver&rdquo;), as métricas são:</p>
+<p>$$ Precisão_{Bon\:Iver} = \frac{TP}{TP + FP} = \frac{|\{1,1,0,0,0\} \cap \{1,0,0,1,0\}|}{|\text{n para cada n} \in \{ 1, 0, 0, 1, 0 \} \text{onde n = 1}|} =\frac{1}{2} = 50 \% $$
+$$ Recall_{Bon\:Iver} = \frac{TP}{TP + FN} = \frac{|\{1,1,0,0,0\} \cap \{1,0,0,1,0\}|}{|\text{n para cada n} \in \{ 1, 1, 0, 0, 0 \} \text{onde n = 1}|} =\frac{1}{2} = 50 \% $$
+$$ F_{1Bon\:Iver} = \frac{2 \cdot 0.5 \cdot 0.5}{0.5 + 0.5} = 50 \% $$</p>
+<p>Calculando as métricas para os outros três artistas e combinando-as:</p>
+<p>$$ Precisão_{Samples} = \frac{1}{4} (0.5 + 0.667 + 1 + 0.75) \approx 73 \% $$
+$$ Recall_{Samples} = \frac{1}{4} (0.5 + 0.667 + 1 + 1) \approx 79 \% $$
+$$ F_{1Samples} = \frac{2 \cdot 0.73 \cdot 0.79 }{0.73 + 0.79} \approx 76 \% $$</p>
+<h4 id="hamming-loss">Hamming Loss</h4>
+<p>Hamming Loss é outra estratégia para availar o resultado de modelos multi-rótulo. Ela é definida como a fração de rótulos que são erroneamente preditos. Então, ela basicamente checa quantos valores no vetor de predições são diferentes dos valores reais.</p>
+<p>A fórmula é:</p>
+<p>$$
+Hamming\:Loss = \frac{1}{n_{labels}} \sum_{j = 0}^{n_{labels} - 1} 1, \text{if} \: y_{j} \neq \hat{y_{j}}
+$$</p>
+<p>Para o nosso exemplo, os vetores verdadeiro e predito são assim:</p>
+<p>
+
+    <p align="center">
+      Actual &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;->
+        [<span style="color: green;font-weight:bold">1</span>, 
+        <span style="color: red;font-weight:bold">1</span>, 
+        <span style="color: green;font-weight:bold">0</span>, 
+        <span style="color: red;font-weight:bold">0</span>, 
+        <span style="color: green;font-weight:bold">0</span>, 
+        <span style="color: green;font-weight:bold">0</span>, 
+        <span style="color: red;font-weight:bold">0</span>, 
+        <span style="color: green;font-weight:bold">1</span>, 
+        <span style="color: red;font-weight:bold">1</span>, 
+        <span style="color: green;font-weight:bold">1</span>, 
+        <span style="color: green;font-weight:bold">1</span>, 
+        <span style="color: green;font-weight:bold">0</span>, 
+        <span style="color: green;font-weight:bold">1</span>, 
+        <span style="color: green;font-weight:bold">1</span>, 
+        <span style="color: green;font-weight:bold">1</span>, 
+        <span style="color: green;font-weight:bold">1</span>, 
+        <span style="color: red;font-weight:bold">0</span>, 
+        <span style="color: green;font-weight:bold">0</span>, 
+        <span style="color: green;font-weight:bold">1</span>, 
+        <span style="color: green;font-weight:bold">1</span>
+        ] </br>
+      Predicted ->
+        [<span style="color: green;font-weight:bold">1</span>, 
+        <span style="color: red;font-weight:bold">0</span>, 
+        <span style="color: green;font-weight:bold">0</span>, 
+        <span style="color: red;font-weight:bold">1</span>, 
+        <span style="color: green;font-weight:bold">0</span>, 
+        <span style="color: green;font-weight:bold">0</span>, 
+        <span style="color: red;font-weight:bold">1</span>, 
+        <span style="color: green;font-weight:bold">1</span>, 
+        <span style="color: red;font-weight:bold">0</span>, 
+        <span style="color: green;font-weight:bold">1</span>, 
+        <span style="color: green;font-weight:bold">1</span>, 
+        <span style="color: green;font-weight:bold">0</span>, 
+        <span style="color: green;font-weight:bold">1</span>, 
+        <span style="color: green;font-weight:bold">1</span>, 
+        <span style="color: green;font-weight:bold">1</span>, 
+        <span style="color: green;font-weight:bold">1</span>, 
+        <span style="color: red;font-weight:bold">1</span>, 
+        <span style="color: green;font-weight:bold">0</span>, 
+        <span style="color: green;font-weight:bold">1</span>, 
+        <span style="color: green;font-weight:bold">1</span>
+        ] </br>
+    </p>
+
+
+
+E o valor de Hamming Loss:</p>
+<p>$$ Hamming \: Loss = \frac{5}{20} = 0.25 = 25 \% $$</p>
+<h1 id="conclusão">Conclusão</h1>
+<p>Esse artigo deu uma introdução a alguns dos conceitos essencias envolvendo a avalição de problemas de classificação.
+Infelizmente, nem toda métrica existente foi mostrada aqui. Existem dezenas delas que nos ajudam a entender e analisar
+a performance de um algoritmo de Machine Learning. Mas entender profundamente a diferença entre os três tipos de classificação,
+o significado de Verdadeiros/Falsos Positivos/Negativos e como eles se relacionam já é um grande passo para ser capaz de compreender
+tópicos mais avançados.</p>
+<p>Espero que as três principais métricas usandas em classificação (precisão, recall e f1-score) estejam mais claras após ler esse artigo.
+E como sempre, qualquer tipo de feedback é bem-vindo.</p>
+<h1 id="referências-e-leituras-adicionais">Referências e leituras adicionais</h1>
+<ul>
+<li><a href="https://scikit-learn.org/stable/modules/model_evaluation.html">scikit-learn</a> (Documentaçãp)</li>
+<li><a href="https://developers.google.com/machine-learning/crash-course/classification/true-false-positive-negative">Classification: True vs. False and Positive vs. Negative</a> (Google ML Crash Course)</li>
+<li><a href="https://www.youtube.com/watch?v=Kdsp6soqA7o">Machine Learning Fundamentals: The Confusion Matrix</a> (Vídeo no YouTube)</li>
+<li><a href="https://towardsdatascience.com/journey-to-the-center-of-multi-label-classification-384c40229bff">Deep dive into multi-label classification..!</a> (Artigo do Medium)</li>
+</ul>
+<ul class="pa0">
+  
+   <li class="list">
+     <a href="/pt/tags/metrics" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">metrics</a>
+   </li>
+  
+   <li class="list">
+     <a href="/pt/tags/machine-learning" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">machine learning</a>
+   </li>
+  
+   <li class="list">
+     <a href="/pt/tags/classification" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">classification</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.0/dist/katex.min.css" integrity="sha384-BdGj8xC2eZkQaxoQ8nSLefg4AV4/AwB3Fj+8SUSo7pnKP6Eoy18liIKTPn9oBYNG" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.0/dist/katex.min.js" integrity="sha384-JiKN5O8x9Hhs/UE5cT5AAJqieYlOZbGT3CHws/y97o3ty4R7/O5poG9F3JoiOYw1" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.0/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://example.com" >
+    &copy;  no brAIner  2021 
+  </a>
+    <div>
+
+
+
+
+
+
+
+<a href="https://www.linkedin.com/in/joaorobson/" target="_blank" class="link-transition linkedin link dib z-999 pt3 pt0-l mr1" title="LinkedIn link" rel="noopener" aria-label="follow on LinkedIn——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+<a href="https://github.com/joaorobson" target="_blank" class="link-transition github link dib z-999 pt3 pt0-l mr1" title="Github link" rel="noopener" aria-label="follow on Github——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <path d="M256,32C132.3,32,32,134.8,32,261.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1   c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8c-10.2-26.5-24.9-33.6-24.9-33.6c-20.3-14.3,1.5-14,1.5-14   c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5   c0-25.1,8.7-45.6,23-61.6c-2.3-5.8-10-29.2,2.2-60.8c0,0,18.8-6.2,61.6,23.5c17.9-5.1,37-7.6,56.1-7.7c19,0.1,38.2,2.6,56.1,7.7   c42.8-29.7,61.5-23.5,61.5-23.5c12.2,31.6,4.5,55,2.2,60.8c14.3,16.1,23,36.6,23,61.6c0,88.2-52.4,107.6-102.3,113.3   c8,7.1,15.2,21.1,15.2,42.5c0,30.7-0.3,55.5-0.3,63c0,6.1,4,13.3,15.4,11C415.9,449.1,480,363.1,480,261.7   C480,134.8,379.7,32,256,32z"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
