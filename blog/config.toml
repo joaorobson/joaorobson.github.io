@@ -1,5 +1,5 @@
 title = "no brAIner"
-baseURL = "https://example.com"
+baseURL = "https://joaorobson.github.io/"
 languageCode = "en-us"
 theme = "gohugo-theme-ananke"
 themesDir = "../.."
