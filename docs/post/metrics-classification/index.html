@@ -45,7 +45,7 @@ The difference is simple. When the problem is formed by only two classes, for in
 <meta itemprop="description" content="Introduction A machine learning classification problem refers to the task of predicting the class of a sample given its features. Usually, these problems are divided into three types: binary, multiclass, and multilabel classification.
 The difference is simple. When the problem is formed by only two classes, for instance, predict if the genre of a book is fiction or non-fiction or if a news is fake or not, it is called binary classification."><meta itemprop="datePublished" content="2020-05-04T10:42:42-42:00" />
 <meta itemprop="dateModified" content="2020-05-04T10:42:42-42:00" />
-<meta itemprop="wordCount" content="4535">
+<meta itemprop="wordCount" content="4562">
 <meta itemprop="keywords" content="metrics,machine learning,classification," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Essential metrics for classification tasks"/>
 <meta name="twitter:description" content="Introduction A machine learning classification problem refers to the task of predicting the class of a sample given its features. Usually, these problems are divided into three types: binary, multiclass, and multilabel classification.
@@ -426,7 +426,13 @@ So, the intersection of <strong>A</strong> and <strong>B</strong> represents the
 <p>As shown above, in classification tasks with more than 2 classes, each metric will have one value per class. But real-world problems can exceed dozens of classes easily and understanding a model performance with hundred of values will become increasingly difficult. Because of that, some strategies to combine the results for each class exist. Multiclass problems usually use three ways to make this combination. They are very common (scikit-learn support them, for instance) and simple to be understood. Let&rsquo;s check them.</p>
 <h3 id="micro-average">Micro average</h3>
 <p>Of the 3 strategies, the only one that does not use a summation is the micro average. Its calculation basically uses the concept of sets intersection presented previously to determine the value of each metric. According to scikit-learn, &ldquo;micro-averaging may be preferred in multilabel settings, including multiclass classification where a majority class is to be ignored.&rdquo; So, the definition is basically:</p>
-<p>|micro|</p>
+<p>$$ Micro \: average = M(y, \hat{y}) $$</p>
+<p>Where:</p>
+<ul>
+<li><em>M</em> is the metric;</li>
+<li><em>y</em> is the set of true labels;</li>
+<li><em>ŷ</em> is the set of predicted labels;</li>
+</ul>
 <p>For our example, the vectors with actual and predicted labels look like this:</p>
 
 
@@ -471,7 +477,7 @@ $$ Recall_{Micro} = \frac{ |Actual \cap Predicted|}{ |Actual| } = \frac{68}{100}
 $$ F_{1Micro} = \frac{ 2 \cdot 0.68 \cdot 0.68 }{ 0.68 + 0.68} = \frac{0.924}{1.36} \approx 68 \% $$</p>
 <h3 id="macro-average">Macro average</h3>
 <p>The second way to combine the metrics is by &ldquo;macro-averaging&rdquo; them. It works simply calculating the mean of the values giving the same weight to all the classes. According to the <a href="https://scikit-learn.org/stable/modules/model_evaluation.html">sklearn documentation</a>, in problems where there are classes with a low frequency, the use of the macro average strategy may highlight their performance. However, attach the same level of importance to all classes is often wrong. The final result could be such that the low performance of infrequent classes might be &ldquo;over-emphasized&rdquo;.</p>
-<p>Although there are issues using macro-average in situations where the data is unevenly distributed, this strategy could be used when the difference among the number of samples for each class is not so big.</p>
+<p>Thus, although there are issues using macro-average in situations where the data is unevenly distributed, this strategy could be used when the difference among the number of samples for each class is not so big.</p>
 <p>Below, the macro-average formula:</p>
 <p>$$
 Macro \: average = \frac{1}{|L|} \sum_{l \in L} M(y_{l}, \hat{y_{l}})

@@ -318,7 +318,13 @@ As shown above, in classification tasks with more than 2 classes, each metric wi
 
 Of the 3 strategies, the only one that does not use a summation is the micro average. Its calculation basically uses the concept of sets intersection presented previously to determine the value of each metric. According to scikit-learn, "micro-averaging may be preferred in multilabel settings, including multiclass classification where a majority class is to be ignored." So, the definition is basically:
 
-|micro|
+$$ Micro \\: average = M(y, \hat{y}) $$
+
+Where:
+
+* *M* is the metric;
+* *y* is the set of true labels;
+* *ŷ* is the set of predicted labels;
 
 For our example, the vectors with actual and predicted labels look like this:
 
@@ -371,7 +377,7 @@ $$ F\_{1Micro} = \frac{ 2 \cdot 0.68 \cdot 0.68 }{ 0.68 + 0.68} = \frac{0.924}{1
 
 The second way to combine the metrics is by "macro-averaging" them. It works simply calculating the mean of the values giving the same weight to all the classes. According to the [sklearn documentation](https://scikit-learn.org/stable/modules/model_evaluation.html), in problems where there are classes with a low frequency, the use of the macro average strategy may highlight their performance. However, attach the same level of importance to all classes is often wrong. The final result could be such that the low performance of infrequent classes might be "over-emphasized". 
 
-Although there are issues using macro-average in situations where the data is unevenly distributed, this strategy could be used when the difference among the number of samples for each class is not so big.
+Thus, although there are issues using macro-average in situations where the data is unevenly distributed, this strategy could be used when the difference among the number of samples for each class is not so big.
 
 Below, the macro-average formula:
 
